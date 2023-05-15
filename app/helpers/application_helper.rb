@@ -18,6 +18,7 @@ module ApplicationHelper
     @weather_presenter ||= WeatherPresenter.new(weather_data)
   end
 
+
   def loan_book_button(book, css_class: '')
     return unless book.loan_available_for?(current_user)
 
