@@ -1,0 +1,6 @@
+defaults:
+  weather_api_key: 'api_key'
+defaults:
+  google_client_id: 'client_id'
+  google_client_secret: 'client_secret'
+  app_host: 'http://localhost:3000'
