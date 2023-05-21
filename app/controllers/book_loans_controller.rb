@@ -5,13 +5,21 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        LoanCreatedJob.perform_async(@book_loan.id)
+        binding.pry
+        DueDateNotificationJob.perform_at(@book_loan.due_date.days_ago(1), @book_loan.id)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
+        notice_calendar
       else
         format.html { redirect_to book_url(book), alert: @book_loan.errors.full_messages.join(', ') }
         format.json { render json: @book_loan.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def notice_calendar
+    UserCalendarNotifier.new(current_user, book).insert_event
   end
 
   def cancel
