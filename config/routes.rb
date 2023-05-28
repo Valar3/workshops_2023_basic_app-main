@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :books
+  resources :books do
+    collection do
+    get 'search'
+    end
+    end
   resources :publishers
   resources :authors
   resources :categories
@@ -14,9 +18,6 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
   root 'books#index'
   get '/book-requests', to: 'book_requests#index', as: 'book_requests'
 end
