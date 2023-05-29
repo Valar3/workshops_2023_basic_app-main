@@ -2,16 +2,17 @@ class WeatherPresenter
   def initialize(weather_data)
     @weather_data = weather_data
   end
+
   def description
-    @weather_data.dig('current','condition','text')
+    @weather_data.dig('current', 'condition', 'text')
   end
 
   def temperature
-    @weather_data.dig('current','temp_c')
+    @weather_data.dig('current', 'temp_c')
   end
 
   def icon
-    @weather_data.dig('current','condition','icon')
+    @weather_data.dig('current', 'condition', 'icon')
   end
 
   def nice_weather?
@@ -24,7 +25,7 @@ class WeatherPresenter
 
   def encourage_text
     if good_to_read_outside?
-      "Get some snacks and go read a book in a park!"
+      'Get some snacks and go read a book in a park!'
     else
       "It's always a good weather to read a book!"
     end

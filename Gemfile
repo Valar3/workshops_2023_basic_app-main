@@ -4,8 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.1'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 gem 'a9n'
+gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -57,6 +61,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
@@ -86,3 +93,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem "hotwire-rails", "~> 0.1.3"
+
+gem "kaminari", "~> 1.2"
