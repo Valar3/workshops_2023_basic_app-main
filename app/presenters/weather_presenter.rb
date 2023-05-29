@@ -15,7 +15,7 @@ class WeatherPresenter
   end
 
   def nice_weather?
-    description == 'Sunny' || 'Partly cloudy'
+    description == 'Sunny' || description == 'Partly cloudy'
   end
 
   def good_to_read_outside?
