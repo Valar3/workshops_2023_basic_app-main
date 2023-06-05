@@ -28,9 +28,11 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.where("title LIKE ?", "%#{params[:search]}%")
+    @books = Book.where('title LIKE ?', "%#{params[:search]}%")
     respond_to do |format|
-      format.json { render json: render_to_string(partial: 'books/index_item', collection: @books, as: :book, formats: [:html])}
+      format.json do
+        render json: render_to_string(partial: 'books/index_item', collection: @books, as: :book, formats: [:html])
+      end
     end
   end
 
@@ -53,8 +55,6 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
-
-
   end
 
   private

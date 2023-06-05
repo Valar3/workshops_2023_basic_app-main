@@ -21,18 +21,15 @@ describe 'Log in', type: :feature do
       expect(page).to have_content('Invalid Email or password.')
     end
   end
-  context 'when user is registered' do
 
+  context 'when user is registered' do
     it 'logs in' do
       within '#new_user' do
-      fill_in 'user_email',	with: user.email
-      fill_in 'user_password',	with: 'password'
-      click_button 'Log in'
-
+        fill_in 'user_email',	with: user.email
+        fill_in 'user_password',	with: 'password'
+        click_button 'Log in'
+      end
+      expect(page).to have_text 'Signed in successfully.'
     end
-    expect(page).to have_text 'Signed in successfully.'
-  end      ### Miejsce na Twój kodzik
-
-
-    end
+  end
 end

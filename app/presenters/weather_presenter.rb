@@ -6,6 +6,7 @@ class WeatherPresenter
   def location
     @weather_data.dig('location', 'name')
   end
+
   def description
     @weather_data.dig('current', 'condition', 'text')
   end
