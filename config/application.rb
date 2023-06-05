@@ -8,11 +8,11 @@ Bundler.require(*Rails.groups)
 
 A9n.root = File.expand_path('..', __dir__)
 A9n.load
-
 module Workshops2023BasicApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.time_zone = 'Warsaw'
 
     # Configuration for the application, engines, and railties goes here.
     #

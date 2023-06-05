@@ -5,10 +5,11 @@ ruby '3.2.1'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'a9n'
-gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
+gem 'bunny'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
-gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'rails', '~> 7.0.4', '>= 7.0.4.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -32,7 +33,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.0.6'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -93,6 +94,11 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+
+gem 'sidekiq', '~> 7.1'
+
+gem "sidekiq-cron", "~> 1.10"
 
 gem "hotwire-rails", "~> 0.1.3"
 
