@@ -5,7 +5,13 @@
     </div>
     <div class="col-md-6">
       <h1 class="text-primary mb-3"><%= @book.title %></h1>
+      <%= form_with(model: @book, data: { turbo_frame: dom_id(@book, 'page_count') }) do |form| %>
+      <%= turbo_frame_tag dom_id(@book, 'page_count'), class: 'inline-show' do %>
       <div class="book-info mb-4">
+      <div class="book-info-label">Pages:</div>
+         <% end %>
+          <% end %>
+         <%= link_to 'edit', edit_book_path(@book)%>
         <div class="book-info-label">Status:</div>
         <div class="book-info-value"><%= @book.status_for(current_user) %></div>
       </div>

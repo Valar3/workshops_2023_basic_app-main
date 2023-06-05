@@ -62,6 +62,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
@@ -92,6 +95,11 @@ group :test do
   gem 'webdrivers'
 end
 
+
 gem 'sidekiq', '~> 7.1'
 
 gem "sidekiq-cron", "~> 1.10"
+
+gem "hotwire-rails", "~> 0.1.3"
+
+gem "kaminari", "~> 1.2"
