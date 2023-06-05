@@ -6,11 +6,11 @@ class BookLoansController < ApplicationController
     respond_to do |format|
       if @book_loan.save
         LoanCreatedJob.perform_async(@book_loan.id)
-        binding.pry
-        DueDateNotificationJob.perform_at(@book_loan.due_date.days_ago(1), @book_loan.id)
+        DueDateNotificationJob.perform_at(@book_loan.id)
+        Publishers::BookLoan.new(@book_loan.attributes).publish
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
-        notice_calendar
+        #notice_calendar
       else
         format.html { redirect_to book_url(book), alert: @book_loan.errors.full_messages.join(', ') }
         format.json { render json: @book_loan.errors, status: :unprocessable_entity }
